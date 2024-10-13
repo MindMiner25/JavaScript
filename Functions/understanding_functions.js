@@ -31,6 +31,7 @@ var sum = function (a, b) {
 console.log("Anonymos Function : ",sum(7, 11));
 
 // IIFE --> Immediately Invoked Function Expression
+// IIFE's are helpful in delibrate scoping of variables.
 
 var sum = (function(a, b){
     const sum = a + b;
@@ -38,3 +39,6 @@ var sum = (function(a, b){
 })(3, 5)
 
 console.log("IIFE : ", sum)
+
+// Function within Functions
+
