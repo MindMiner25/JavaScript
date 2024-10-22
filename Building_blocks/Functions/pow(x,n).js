@@ -12,8 +12,8 @@ function pow(x, n) {
     return halfPower*halfPower*x;
 }
 
-let x = Number(prompt("Enter x : ", " "));
-let n = Number(prompt("Enter n : ", " "));
+let x = +(prompt("Enter x : ", " "));
+let n = +(prompt("Enter n : ", " "));
 
 if (n < 1) {
     alert(`Power ${n} is not supported, use a positive integer`);
