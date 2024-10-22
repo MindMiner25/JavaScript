@@ -16,11 +16,15 @@
 
 // DATA TYPES
 
+// JavaScript is a dynamically typed language, i.e. there exist data types but variables are not bound to any of them.
+
 // String : Text --> data enclosed in '' or " ".
 
 let userName = "Sudhanshu Patel";
 
 // Number : Any real number
+// special numbers :-  -Infinity, Infinity, NaN
+// NaN --> represents a computational error. It is the result of an incorrect or undefined mathematical operation.
 
 let userID = 21121084
 
@@ -83,7 +87,8 @@ console.log(_email, "\n", _phone,"\n", _name,"\n", _birthday,"\n", _gender,"\n",
 // There is a widespread practice to use constants as aliases for "difficult-to-remember" values that are known before execution.
 
 const COLOR_RED = "#F00";
+const COLOR_ORANGE = "#FF7F00";
 
 let color = COLOR_RED;
 
-alert(color);
+// Please spend time thinking about the right name for a variable before declaring it. Doing so will repay you handsomely.
