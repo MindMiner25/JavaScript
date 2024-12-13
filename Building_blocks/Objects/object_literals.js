@@ -3,7 +3,7 @@
 // Objects can be created using one of the two syntaxes
 
 // Object constructor syntax
-let user = new Object();
+// let user = new Object();
 
 // Object literal syntax
 let User = {
@@ -47,6 +47,7 @@ alert(user.applecomputers);
 // Property value shorthand
 
 // *** In real code we often use existing variables as values for property names.
+
 
 
 
