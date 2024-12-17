@@ -87,11 +87,109 @@ let users = [
     {id: 3, name: "sUdhanshu"},
 ]
 
-// find(func) => if condition is met then object is returned otherwise undefined is returned.
+// find(func) => if true is returned item is returned otherwise undefined is returned.
 
-let user = users.find((item, index, array) => {return item.id == 1 });
+let user = users.find((item, index, array) => {return (item.id == 1)});
 
 alert(user.name);
+
+// filter() => returns an array of objects satisfying the specified condition.
+
+let user2 = users.filter((item) => {return (item.id%2 === 1)});
+
+alert(user2);
+
+// Array Transformation
+
+// map(func(){}) => returns an array of results
+
+// PROBLEM :- Return an array of length of each f1 team.
+
+let lengths = f1_teams.map((item) => item.length);
+
+alert(lengths);
+
+// sort(func(){}) => walks the array, compare its elements using the provided function and reorder them.
+// ***** The main thing here is to provide a function for comparing elements.
+
+// PROBLEM 
+// Sort the given array nums in ascending order.
+
+let nums = [1, 18, 5, 6, 4, 2, 3]
+
+// In the function two elements are compared
+// if a > b function needs to return a +ve number.
+// if a < b function needs to return a -ve number.
+
+nums.sort((a,b) => {
+    // if (a > b) return 1; 
+    // if (a == b) return 0;
+    // if (a < b) return -1;
+    return (a-b); 
+})
+
+alert(nums);
+
+// Sort the given array
+
+let countries = ['Österreich', 'Andorra', 'Vietnam'];
+
+countries.sort((a,b) => a.localeCompare(b));
+
+alert(countries);
+
+// reverse() => reverses the order of elements in arr.
+
+// split(delim) => splits the string into individual elements by the delimiter and returns an array of elements.
+
+let str = "I am a Naval Officer";
+
+let a = str.split(" ");
+
+alert(a);
+
+// join(glue) => reverse to split(delim) => returns a string of elements joined by glue.
+
+let joined_str = a.join(" ");
+
+alert(joined_str);
+
+// reduce(func(accumulator, item, index, array) {}, initialVal) => It is used to calculate a single value based on the array.
+
+// PROBLEM :- Find the sum of elements of the given array.
+
+let n = [1,2,3,4,5,6,7,8,9];
+
+alert(n.reduce((sum, curr) => sum + curr), 0);
+alert(n.reduceRight((sum, curr) => sum + curr), 0);
+
+// Array.isArray(arg) => checks whether arg is an array or not.
+
+// PROBLEMS
+// Write the function camelize(str) that changes dash-separated words like “my-short-string” into camel-cased “myShortString”.
+// That is: removes all dashes, each word after dash becomes uppercased.
+
+let camelize = (str) => {
+    return str.split("-").
+    map((element, index) => index === 0 ? element : element == "" ? element : element[0].toUpperCase()+element.slice(1)).
+    join("");
+}
+
+alert(camelize("-webkit---transition"));
+
+// Write a function filterRange(arr, a, b) that gets an array arr, looks for elements with values higher or equal to a and lower or equal to b and return a result as an array.
+// The function should not modify the array. It should return the new array.
+
+let arr2 = [5,3,8,1];
+
+let filterRange = (arr2, a, b) => {
+    return arr2.filter((item) => {return (item >= a) && (item <= b)});
+}
+
+let filtered = filterRange(arr2, 1, 4);
+
+alert( filtered );
+alert(arr2);
 
 
 
