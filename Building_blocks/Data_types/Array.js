@@ -191,6 +191,116 @@ let filtered = filterRange(arr2, 1, 4);
 alert( filtered );
 alert(arr2);
 
+// Write a function filterRangeInPlace(arr, a, b) that gets an array arr and removes from it all values except those that are between a and b. The test is: a ≤ arr[i] ≤ b.
+// The function should only modify the array. It should not return anything.
+
+let filterRangeInPlace = (arr,a,b) => {
+    arr.forEach((element, index) => {
+        if (element <= a || element >= b) arr.splice(index, 1);
+    })
+}
+
+filterRangeInPlace(arr2, 1, 4);
+
+alert( arr2 );
+
+// Sort in decreasing order
+
+// if a > b then +ve shall be returned for sorting in ascending order.
+// but if we return -ve then sorting will be done in descending order.
+
+arr2.sort((a,b) => b-a);
+
+alert(arr2);
+
+// We have an array of strings arr. We’d like to have a sorted copy of it, but keep arr unmodified.
+// Create a function copySorted(arr) that returns such a copy.
+
+let copySorted = (arr) => [].concat(arr).sort((a,b) => a.localeCompare(b));
+let s = ["HTML", "JavaScript", "CSS"];
+alert(copySorted(s));
+alert(s);
+
+// You have an array of user objects, each one has user.name. Write the code that converts it into an array of names.
+
+let john = { name: "John", age: 25 };
+let pete = { name: "Pete", age: 30 };
+let mary = { name: "Mary", age: 28 };
+
+let Users = [ john, pete, mary ];
+
+let names = Users.map((element) => element.name);
+
+alert(names);
+
+// You have an array of user objects, each one has name, surname and id.
+// Write the code to create another array from it, of objects with id and fullName, where fullName is generated from name and surname.
+
+let John = { name: "John", surname: "Smith", id: 1 };
+let Pete = { name: "Pete", surname: "Hunt", id: 2 };
+let Mary = { name: "Mary", surname: "Key", id: 3 };
+
+let uSers = [ John, Pete, Mary ];
+
+let usersMapped = uSers.map((element) => ({fullname: `${element.name} ${element.surname}`, id: element.id}));
+
+alert(usersMapped[0].id);
+alert(usersMapped[0].fullname);
+
+// Write the function sortByAge(users) that gets an array of objects with the age property and sorts them by age.
+
+let sortByAge = (arr) => arr.sort((a,b) => a.age-b.age);
+
+sortByAge(Users);
+
+alert(Users[0].name);
+alert(Users[1].name);
+alert(Users[2].name);
+
+// Write the function getAverageAge(users) that gets an array of objects with property age and returns the average age.
+
+// The formula for the average is (age1 + age2 + ... + ageN) / N.
+
+let getAverageAge = (arr) => Math.ceil(arr.reduce((sum, element) => sum + element.age, 0)/arr.length);
+
+alert(getAverageAge(Users));
+
+// Let arr be an array.
+// Create a function unique(arr) that should return an array with unique items of arr.
+
+let strings = ["Hare", "Krishna", "Hare", "Krishna", "Krishna", "Krishna", "Hare", "Hare", ":-O"];
+
+let unique = (arr) => {
+    let result = [];
+
+    for (let element of arr) {
+        if (!result.includes(element)) {
+            result.push(element);
+        }
+    }
+
+    return result;
+}
+
+alert(unique(strings));
+
+// Let’s say we received an array of users in the form {id:..., name:..., age:... }.
+// Create a function groupById(arr) that creates an object from it, with id as the key, and array items as values.
+
+let usErs = [
+    {id: 'john', name: "John Smith", age: 20},
+    {id: 'ann', name: "Ann Smith", age: 24},
+    {id: 'pete', name: "Pete Peterson", age: 31},
+];
+
+let groupById = (users) => {
+    users.reduce((obj, element) => {
+        obj[element.id] = element; 
+        return obj;
+    }, {});
+}
+
+let usersById = groupById(usErs);
 
 
 
