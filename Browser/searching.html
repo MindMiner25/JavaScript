@@ -1,0 +1,43 @@
+<!-- How to get an arbitrary element of the page?
+Yes, we can apply DOM navigation properties but such properties are only hepful when the elements are close.
+-->
+
+<html>
+    <body>
+        <div id="elem">
+            <div id="elem-content">Element</div>
+        </div>
+    </body>
+
+    <script>
+        // getElementById => can be called only on document object (preferred method)
+        let elem = document.getElementById("elem");
+        elem.style.backgroundColor = "red"
+        // another way => the element is an object that is referenced by id = "elem" in the global lexical environment.
+        window["elem"].style.backgroundColor = "yellow";
+    </script>
+
+    <ul>
+        <li>The</li>
+        <li>Test</li>
+    </ul>
+    <ul>
+        <li>has</li>
+        <li>Passed</li>
+    </ul>
+
+    <script>
+        // elem.querySelectorAll(css) => returns all elements inside elem matching the given CSS-selector
+        // select all the last elements of the ul.
+        let elements = document.querySelectorAll("ul > li:last-child");
+
+        for (let element of elements) {
+            alert(   element.innerHTML   );
+        }
+
+        // elem.querySelector(css) => returns the first element inside elem matching the given css-selector.
+
+        let element = document.querySelector("ul > li:last-child");
+        alert(element.innerHTML);
+    </script>
+</html>
