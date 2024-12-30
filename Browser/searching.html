@@ -22,12 +22,23 @@ Yes, we can apply DOM navigation properties but such properties are only hepful 
         <li>Test</li>
     </ul>
     <ul>
+
         <li>has</li>
         <li>Passed</li>
     </ul>
 
+    <h1>Contents</h1>
+
+    <div class="contents">
+        <ul class ="book">
+            <li class="chapter1">Chapter1</li>
+            <li class="chapter2">Chapter2</li>
+        </ul>
+    </div>
+
     <script>
         // elem.querySelectorAll(css) => returns all elements inside elem matching the given CSS-selector
+        // gives a static collection of elements.
         // select all the last elements of the ul.
         let elements = document.querySelectorAll("ul > li:last-child");
 
@@ -39,5 +50,44 @@ Yes, we can apply DOM navigation properties but such properties are only hepful 
 
         let element = document.querySelector("ul > li:last-child");
         alert(element.innerHTML);
+
+        // elem.matches(css) => checks whether element matches the given css selector.
+
+        alert(   element.matches("ul > li:last-child")   );
+
+        // elem.closest(css) => looks for nearest ancestor that matches the CSS-selector.
+        
+        let e = document.querySelector(".chapter1");
+
+        alert(   e.closest(".book")   );
+        alert(   e.closest(".contents")   );
+        alert(   e.closest("h1")   );       // null => as h1 is not an ancestor.
+    </script>
+
+    <table id="table">
+        <tr>
+            <td>Your age:</td>
+            <td>
+                <label>
+                    <input type="radio" name="age" value="young" checked> less than 18
+                </label>
+                <label>
+                    <input type="radio" name="age" value="young"> from 18 to 50
+                </label>
+                <label>
+                    <input type="radio" name="age" value="senoir"> more than 60
+                </label>
+            </td>
+        </tr>
+    </table>
+
+    <script>
+        // elem.getElementByTagName(tag) => returns the collection of elements with the given tag name.
+        let inputs = table.getElementByTagName(input)
+
+        for (let ip of inputs) {
+            alert(   ip.value  );
+        }
     </script>
 </html>
+
