@@ -1,0 +1,176 @@
+<!-- DOM modification is the key to create LIVE pages -->
+<!-- Example: Show a message -->
+
+<html>
+    <body>
+        <style>
+            .alert {
+              padding: 15px;
+              border: 1px solid #d6e9c6;
+              border-radius: 4px;
+              color: #3c763d;
+              background-color: #dff0d8;
+            }
+        </style>
+    
+        <!-- Creating DOM nodes 
+            1. element node => document.createElement(tag)
+            2. text node => document.createTextNode(text)
+        -->
+    
+        <!--
+        <div class="alert">
+        <strong>Hi there!</strong> You've read an important message.
+        </div>
+        
+        Create the same div with JS?
+        -->
+        <script>
+            // 1. Create <div> 
+            let div = document.createElement("div");
+            // 2. Set its class to "alert".
+            div.className = "alert";
+            // 3. Fill it with the content
+            div.innerHTML = "<strong>Hi there!</strong> You've read an important message.";
+            // 4. Insert it in the body
+            document.body.append(div);
+
+            // 5. Disappear the message after 1 second.
+            // setTimeout(()=>div.remove(),1000);
+
+            // 6. Insert one more similar message. => cloneNode
+            // elem.cloneNode(true) => creates a deep copy of the element.
+            // elem.cloneNode(false) => creates a clone without child elements.
+            let div2 = div.cloneNode(true);
+            div2.querySelector("strong").innerHTML = "Bye there!";
+            div.after(div2);
+        </script>
+
+        <!-- INSERTION METHODS -->
+        <!-- Add items to this list and the text before/after it. -->
+        <ol id="ol">
+            <li>0</li>
+            <li>1</li>
+            <li>2</li>
+        </ol>
+
+        <script>
+            // insert string "before" before <ol>
+            // node.before(...nodes or string) -> inserts nodes or strings before the node.
+            let list = document.querySelector("#ol");
+            list.before("before");
+
+            // insert string "after" after <ol>
+            // node.after(...nodes or string) => inserts nodes or string after the node.
+            list.after("after");
+
+            // insert liFirst at the beginning of <ol>
+            let liFirst = document.createElement("li");
+            liFirst.innerHTML = "prepend";
+            list.prepend(liFirst);
+
+            // insert liLast at the end of <ol>
+            let liLast = document.createElement("li");
+            liLast.innerHTML = "append";
+            list.append(liLast);
+        </script>
+        <!-- These methods can only be used to insert DOM nodes or text pieces -->
+
+        <!-- How to insert an HTML string, with all tags and stuff working -->
+        <!-- insertAdjacentHTML/Text/Element -->
+        
+        <div id="div"></div>
+        <script>
+            // elem.insertAdjacentHTML(where,html)
+            // Insert a para Hello before div. => where = "beforebegin"
+            document.querySelector("#div").insertAdjacentHTML("beforebegin","<p>Hello</p>");
+
+            // Inset a para Hello at the beginning of the element => where = "afterbegin"
+            document.querySelector("#div").insertAdjacentHTML("afterbegin","<p>Hello</p>");
+
+            // Insert a para Hello in the element at the end => where = "beforeend".
+            document.querySelector("#div").insertAdjacentHTML("beforeend","<p>Hello</p>");
+
+            // Insert a para Hello after the element. => where = "afterend"
+            document.querySelector("#div").insertAdjacentHTML("afterend","<p>Hello</p>")
+
+            // elem.insertAdjacentText(where,text) => inserts text at the desired position.
+            // elem.insertAdjacentElement(where,text) => inserts Element at the desired position.
+        </script>
+
+        <div id="first">First</div>
+        <div id="second">Second</div>
+
+        <!-- Swap these two elements -->
+        <!-- Insertion methods automatically removes the node from the old palce -->
+        
+        <script>
+            second.after(first);
+        </script>
+
+        <!-- DocumentFragment => special DOM Node that serves as a wrapper to pass around list of nodes -->
+        
+        <ul id="books"></ul>
+
+        <script>
+            // Insert some books in the list "books".
+            // 1. using array to store liNodes.
+            let booksArray = [];
+            
+            while (true) {
+                let name = prompt("Enter book : ","");
+
+                if (name == "" || name == null) break;
+
+                let book = document.createElement("li");
+                book.innerHTML = name;
+
+                booksArray.push(book);
+            }
+
+            document.querySelector("#books").append(...booksArray);
+
+            // 2. using special DOM node that serves as a wrapper to pass around lsit of nodes.
+            let fragment = new DocumentFragment();
+
+            while (true) {
+                let name = prompt("Enter book : ","");
+
+                if (name == "" || name == null) break;
+
+                let book = document.createElement("li");
+                book.innerHTML = name;
+
+                fragment.append(book);
+            }
+
+            document.querySelector("#books").append(fragment);
+        </script>
+
+        <!-- Write an interface to create a list from user input.
+
+            For every list item:
+
+            Ask a user about its content using prompt.
+            Create the <li> with it and add it to <ul>.
+            Continue until the user cancels the input (by pressing Esc or via an empty entry).
+            All elements should be created dynamically.
+
+            If a user types HTML-tags, they should be treated like a text. 
+        -->
+
+        <ul id="userItems"></ul>
+
+        <script>
+            while (true) {
+                let input = prompt("Enter content : ", "");
+
+                if (input == "" || input == null) break;
+
+                let content = document.createElement("li");
+                content.textContent = input;
+                document.querySelector("#userItems").append(content);
+            }
+        </script>
+    </body>
+</html>
